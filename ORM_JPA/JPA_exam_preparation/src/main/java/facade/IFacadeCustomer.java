@@ -13,7 +13,7 @@ public interface IFacadeCustomer {
     //customer
     public Customer addCustomer(Customer c);
     public Customer findACustomer (Long id);
-    public String deleteSingleCustomer (Customer c);
+    public void deleteSingleCustomer (Long id);
     public Customer editCustomer (Customer c);
     public List<Customer> findAllCustomers ();
     

@@ -62,14 +62,18 @@ public class FacadeCustomer implements IFacadeCustomer{
      * @return a text that tell you about the method is succes or false
      */
     @Override
-    public String deleteSingleCustomer(Customer c) {
+    public void deleteSingleCustomer(Long id) {
         EntityManager em = emf.createEntityManager();
         
         try{
             em.getTransaction().begin();
-            em.remove(c);
+            Query query = em.createQuery("DELETE FROM Customer c WHERE c.id =:customerid");
+            query.setParameter("customerid", id);
+            int deletedCount = query.executeUpdate();
+            if(deletedCount > 0 ){
+                System.out.println("Done");
+            }
             em.getTransaction().commit();
-            return "Removed the customer";
         }
         finally{
             em.close();
@@ -274,6 +278,8 @@ public class FacadeCustomer implements IFacadeCustomer{
         ProductOrder po1 = fc.findAOrder(1l);
         double total = fc.getTotalPrice(po1);
         System.out.println("total pris "+  total);
+        
+        
     }
     
 }
