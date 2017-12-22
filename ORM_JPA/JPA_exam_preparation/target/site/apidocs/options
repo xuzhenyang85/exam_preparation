@@ -1,0 +1,24 @@
+-classpath
+'/Users/xzy/.m2/repository/org/eclipse/persistence/javax.persistence/2.1.0/javax.persistence-2.1.0.jar:/Users/xzy/.m2/repository/org/eclipse/persistence/eclipselink/2.5.2/eclipselink-2.5.2.jar:/Users/xzy/.m2/repository/mysql/mysql-connector-java/5.1.43/mysql-connector-java-5.1.43.jar:/Users/xzy/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.jpa.modelgen.processor/2.5.2/org.eclipse.persistence.jpa.modelgen.processor-2.5.2.jar:/Users/xzy/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.core/2.5.2/org.eclipse.persistence.core-2.5.2.jar:/Users/xzy/.m2/repository/org/eclipse/persistence/commonj.sdo/2.1.1/commonj.sdo-2.1.1.jar:/Users/xzy/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.asm/2.5.2/org.eclipse.persistence.asm-2.5.2.jar:/Users/xzy/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.jpa/2.5.2/org.eclipse.persistence.jpa-2.5.2.jar:/Users/xzy/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.jpa.jpql/2.5.2/org.eclipse.persistence.jpa.jpql-2.5.2.jar:/Users/xzy/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.antlr/2.5.2/org.eclipse.persistence.antlr-2.5.2.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/Users/xzy/Documents/Moonniuniu/Datamatiker/3.semester/Exercises/Exam-preparation/ORM_JPA/JPA_exam_preparation/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2017. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/xzy/Documents/Moonniuniu/Datamatiker/3.semester/Exercises/Exam-preparation/ORM_JPA/JPA_exam_preparation/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'JPA_exam_preparation 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' '/Users/xzy/Documents/Moonniuniu/Datamatiker/3.semester/Exercises/Exam-preparation/ORM_JPA/JPA_exam_preparation/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'JPA_exam_preparation 1.0-SNAPSHOT API'
