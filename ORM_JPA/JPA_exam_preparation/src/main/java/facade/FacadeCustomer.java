@@ -62,12 +62,12 @@ public class FacadeCustomer implements IFacadeCustomer{
      * @return a text that tell you about the method is succes or false
      */
     @Override
-    public String deleteSingleCustomer(Long id) {
+    public String deleteSingleCustomer(Customer c) {
         EntityManager em = emf.createEntityManager();
         
         try{
             em.getTransaction().begin();
-            em.remove(id);
+            em.remove(c);
             em.getTransaction().commit();
             return "Removed the customer";
         }

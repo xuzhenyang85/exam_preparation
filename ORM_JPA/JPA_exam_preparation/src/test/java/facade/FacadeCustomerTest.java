@@ -22,6 +22,7 @@ import static org.junit.Assert.*;
  */
 public class FacadeCustomerTest {
     private static EntityManager em = null;
+    private static IFacadeCustomer facade = null;
     
     public FacadeCustomerTest() {
         
@@ -31,6 +32,9 @@ public class FacadeCustomerTest {
     public static void setUpClass() throws Exception{
         if(em == null){
             em = (EntityManager)Persistence.createEntityManagerFactory("PU").createEntityManager();
+        }
+        if(facade == null) {
+            facade = new FacadeCustomer(Persistence.createEntityManagerFactory("PU"));
         }
     }
     
@@ -45,8 +49,8 @@ public class FacadeCustomerTest {
         
         //---------- Create a Customer c1 ----------
         Customer c1 = new Customer();
-        c1.setName("Xu");
-        c1.setEmail("xu@dk.dk");
+        c1.setName("Ben");
+        c1.setEmail("ben@dk.dk");
         // At this Point the Entity does not have a 
         // Persistence Identity and is  not assciated
         // with a persistent Context
@@ -61,7 +65,7 @@ public class FacadeCustomerTest {
         c2.setName("Kim");
         c2.setEmail("kim@dk.dk");
         em.persist(c2); // Persist the Entity
-        em.flush();
+        em.flush(); // empty the internal SQL cache, and excute it immediately to the db
         
         System.out.println("Customer 1 Id :" + c1.getId());
         System.out.println("Customer 2 Id :" + c2.getId());
@@ -102,26 +106,38 @@ public class FacadeCustomerTest {
 
 //    @Test
 //    public void testFindACustomer() {
-//        System.out.println("findACustomer");
-//        Long id = null;
-//        FacadeCustomer instance = null;
-//        Customer expResult = null;
-//        Customer result = instance.findACustomer(id);
+//        System.out.println("Find A Customer");
+//        Customer c1 = facade.addCustomer(new Customer("Bent","bent@dk.dk"));
+//        Long id = c1.getId();
+//        String expResult = "Bent";
+//        String result = facade.findACustomer(id).getName();
 //        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
 //    }
-//
+
 //    @Test
 //    public void testDeleteSingleCustomer() {
-//        System.out.println("deleteSingleCustomer");
-//        Long id = null;
-//        FacadeCustomer instance = null;
-//        String expResult = "";
-//        String result = instance.deleteSingleCustomer(id);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+//        
+//        // Start a transaction
+//        em.getTransaction().begin();
+//        
+//        //---------- Create a Customer ----------
+//        Customer c1 = new Customer();
+//        c1.setName("Bent");
+//        c1.setEmail("bent@dk.dk");
+//        em.persist(c1);
+//        em.flush();
+//        
+//        System.out.println("Customer Id :" + c1.getId());
+//        
+//        // ------------  Perform Selects ---------
+//        Query query = em.createQuery("DELETE FROM Customer c WHERE c.id =:customerid");
+//        
+//        query.setParameter("customerid", c1.getId());
+//        String expResult = "Removed the customer";
+//        String retrieved1 = (String) query.getSingleResult();
+//        assertEquals(expResult, retrieved1);
+//        
+//        em.getTransaction().commit();
 //    }
 //
 //    @Test
