@@ -1,0 +1,58 @@
+Object Relational Mapping with JPA (Java persistence API)
+
+●	Describe how you have handled persistence in the last three semesters. The considerations should include all relevant layers. File IO, Relational Databases, local storage and cookies in browsers. 
+
+Semester 1: gemt vi dataene i en fysisk fil.
+Semester 2: skrevet sql script eller oprettet data tabler direkt i databasen. 
+Semester 3: lavede entities objekt klasser for oprette databasetablerne og styrede med relateret data. 
+
+●	Explain the rationale behind the topic Object Relational Mapping and the Pros and Cons in using a ORM
+Gem og styring af objekter i databasen, gem business objekter(Java objekter)
+ORM er programmeringsteknik til at konvertere data mellem objekter i java og en relationel  databasen. Den gør at man kan skrive sin programmeringslogik med objekter frem for i SQL
+
+Pros of ORM （fordele)
+
+Nemt: ORM er brugt så man kan skrive en gang programmingsstruktur og ORM lageren vil håndtagere den sidste statement for at konfigurere DBMS(Data Base Management System). 
+
+Nedbygning af data (indsæt)
+Når de er relateret, den ORM lageren vil putte dataene automatisk ind. 
+
+Single sprog
+Ingen krav til at lære SQL sprog, og kun udviklings sprog
+
+TIlføjelse er nemt
+ORM lageren gør tilføjelse af ny data(SQL insert) og opdatering data(SQL Update) i samme måde. Dette gør at skrive og vedligeholde af kode a pice of cake. 
+
+Cons af ORM (Udlemp)
+
+Langsom: hvis man sammenligner med at skrive en række SQL eller at bruge ORM, vil man finde ud af at række i SQL er meget hurtigere på grund af der er ingen translation layer. 
+
+Det er muligt at gøre queries hurtigere hvis man kender SQL sprog og DBMS, men det er ikke muligt i ORM.
+
+Studing
+Når man er i gang med en stor mængde data projekt er man ikke glad for ORM, for man skal lære mere for at kunne minimere DBMS hits.
+
+●	Explain the JPA strategy for handling Object Relational Mapping and important classes/annotations involved.
+
+JPA er en bibliotek hvor det er relateret med java specifikation. Derfor den støøter alle objekter orienteret koncept for entity persistence. 
+
+Inheritance Strategies (Arv/nedarving strategi)
+Arv/nedarvingen er kern strategi af objekt orienteret sprog, derfor kan vi bruge arv relateret eller strategi mellem entities. JPA understøtter 3 typer af arv/nedarving strategier af som SINGLE_TABLE, JOINED_TABLE, og TABLE_PER_CLASS. 	
+
+Single table er standard, som er simplest, typisk og best løsning, som tager alle klasserne, både super og sub klasser, og mapping ned i en enkel tabel. God til at spare pladser. child class blev adskillet med DiscriminatorColumn(name="L") og DiscriminatorValue(ParantsName). 
+F.eks. @Inheritance( strategy = InheritanceType.SINGLE_TABLE )
+
+Joined table er mest logisk nedarving løsning, fordi spejler den obejkte model i den data model. Dvs. Child class blev mapping til database table, og kun få extends propeties, parents class viser alle dele propeties. 
+
+Table Per Class
+Den skal man være forsigtig at bruge, fordi table per class lad nedarving bruger objekt model,så den er ikke 
+
+●	Outline some of the fundamental differences in Database handling using plain JDBC versus JPA
+
+JDBC er en standard for Database adgang, som for at forbinde til DB direkt og kører SQL, det er en af det underlying teknologi 
+JPA er en standard for ORM, at den teknologi får man lov til mapping mellem objekter og database tabler.
+
+Størst forskellen er niveu af obstrakt. JDBC er en lav standard for interaktion med databasen. JPA har højre interaktion med DB. JPA får man lov til at bruge objekt model. Dette gør nemmere for udviklerne. JDBC får man lov til at gøre mere direkt med DB, men det kraver mere opmærksom.
+
+
+
