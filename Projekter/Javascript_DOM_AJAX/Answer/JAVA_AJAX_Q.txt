@@ -1,0 +1,102 @@
+●	Explain about the Document Object Model, and why it’s (very) relevant for modern Web-development
+
+Document Object Model(DOM), når en hjemmeside blev læst, browseren bygger selv en Document Object Model af den side. Den forbinder web sider til script eller programmerings koder sprog. Normal mener mener Javascript sprog. DOM model er bygget som et logisk træ af objekter.
+Hver branch af træet ender i en node, og hver node indeholder objekter. DOM metoder lader koder få adgang i træet, så man kan ændre den dokuments struktur, stil og content. Nodes kan have event handlers, når en event blev kaldet, blev handlers executed.
+
+Fordel og hvorfor er det relavant for moderne web-udvikler : med objekt model, javascript laver en dynamisk html
+- ændre alle html elementerne af siden
+- ændre alle html attributes af siden
+- ændre alle css design
+- kan fjerne eksisteret html elementer og attributerne
+- kan tilføje ny html elemnter og attributer
+- kan reagere af alle HTML events 
+- kan oprette ny HTML events
+
+
+●	Explain (using an example of your own choice) about JavaScript events, and Event Bubbling
+
+Regeering af Events
+
+En JavaScript kan være ekseveret når en event kommer frem, lige som en bruger klikker på en HTML element/button.
+
+onclick() = javascript
+onClick() = "this.innerHTML = 'Ooops!' "> Click me </h1>
+
+eller.
+
+<h1 onclick="changeText(this)">Click on this text!</h1>
+
+<script>
+function changeText(id) { 
+    id.innerHTML = "Ooops!";
+}
+</script>
+
+I denne eksempel, en funktion blev kaldet fra den event handleren.
+
+Event Bubbling
+
+Når en event sker på en element, det først kører den handler på det, derefter dens parent, og så alle dem på andre bestforældre. 
+Eksampel:
+<form onclick="alert('form')">FORM
+  <div onclick="alert('div')">DIV
+    <p onclick="alert('p')">P</p>
+  </div>
+</form>
+
+Hvis man klikker på div med P, så kommer tekst p først, og så div, og så form. 
+Dvs. vi starter dybste lag og hele vejen igennem op, fordi events "bubble" fra den inde element op gennem forældre lige som en bubble i vand. 
+
+##Mest af events bubble. 
+
+
+●	Elaborate on how JSON or XML supports communication between subsystems, even when the subsystems are implemented on diﬀerent platforms.
+
+JSON er forkortelse af JavaScript Objekt Notation, og er en syntax for gemme og exchanging data, og er tekst, skrevet med JavaScript objekt notation.
+
+XML står for eXtensible Markup Language, som designed til at gemme og transportere data, og designed til mennesker og maskine kan læse. 
+XML spiller en vigtig role i mange forskellige IT systemer, er ofte brugt for fordeling data over internetet. 
+
+HVORFOR bruger vi JSON og XML?
+Når JSON og XML format er kun med tekst, og tekst kan læses og brugt som en data format af alle programmerings sprog. 
+
+
+●	Explain the topic AJAX and how it has changed the way modern web-applications are created
+
+AJAX: Asynchronous JavaScript and XML
+
+Fordelen er web applikationer er mere hurtigere, mere opdateret til user interface uden at reloading hele side. Det gør applikation hurtigere og mere responsive til bruger aktioner. 
+
+AJAX er en udviklers drøm, fordi du kan:
+- updatere en web siden uden af loade siden igen
+- lav en forespørgelse data fra en server - efter siden er loadet
+- modtag data fra en server - efter siden er loadet
+- send data til en server - i baggrund
+
+
+
+●	Explain the Same Origin Policy (for AJAX), and different ways to work around it
+
+The Same Origin Policy begrænser hvordan en dokument eller script loadet fra en Origin kan interaktiv med en ressource fra andre Origin.
+Det er en sikkerhed mekanisme for isolere potentielt skadelig dokumenter. 
+
+Eksempler:
+
+URL													Outcome		Reason
+http://store.company.com/dir2/other.html			Success	 
+http://store.company.com/dir/inner/another.html		Success	 
+https://store.company.com/secure.html				Failure		Different protocol
+http://store.company.com:81/dir/etc.html			Failure		Different port
+http://news.company.com/dir/other.html				Failure		Different host 
+
+Andre måder ved at bruge the Same Origin Policy
+- Chaning Origin: f.eks. fra http://store.company.com/dir/other.html til http://company.com/dir/page.html
+	document.domain = "company.com";
+
+
+- Cross-Origin network access: 
+Hvordan giver lov til?
+kan bruge CORS til at give lov til cross-origin-access.
+
+Hvordan blokerer cross-origin-access
+via Token. 

@@ -1,0 +1,43 @@
+Exam Preparation
+
+General part
+
+## 1
+Singele Page Applikation, SPA er brugt til at beskrive applikation som er bygget for web. Disse applikation får adgang via en web browser som alle andre websiderne, men mere dynamisk til mobil og destop apps. SPA bruger AJAX som kan kommunikatere med back-end server uden at refrech hele siden. 
+
+## 2 
+React
+Lige som en java klasse, den har en constractor, der starter klassen med en speciel tilstand. 
+Være opmærksom på extends Component(React), udvider alt det i forvejen og med mere funktioner. 
+
+Vigtig i react: 
+render() metoder, vi putter html og jsx sammen, så vi kan forenkle koder
+props (klassens attribute)
+setState
+
+Hvad er Rendering
+render() skal returnerer noget, det er der html skal være, som skal vises til klient. Vi returnerer ikke en tekst string, men en element, js6. Være opmærksomhed på {}.
+
+Hvad er Props
+i HTML er der <a href = “#” > click here </a>  I html href hedder det  attribute, a hedder en element, i react kalder prop, og html skal skrive med små og react skriver man med stor. 
+lige som en konstruktion, den er altid tilgængelig når vi extender react så kan vi altid bruge props.
+
+Life Cycle 
+Vi har nogle events som vi ved hele sikkert at blev kørt.
+ComponentWillUnmount
+ComponentDidMount
+ComponentWillRecieveProps
+ComponentWillUpdate
+ComponentDidUpdate
+
+
+## 3
+
+Hvad er Component
+Hver del kan være en component. 
+En komponent kan indeholder flere komponenter, den skal styles med CSS, så de får den rigtige udseende. 
+
+Routing
+React Router gør applikations UI kunne holde synkronisk med URL. 
+
+## 4
