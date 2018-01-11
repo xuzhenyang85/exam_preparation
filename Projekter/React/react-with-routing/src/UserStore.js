@@ -2,6 +2,7 @@
 //place this in a file userStore.js
 class UserStore {
 
+//this._users: privat array, den bliver ikke vist direkt, men via getter og setter
   constructor() {
     this._users = [
           { 
