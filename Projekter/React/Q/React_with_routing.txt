@@ -1,0 +1,16 @@
+React with routing
+
+●	Describe the term Single Page Application and why it relevant for modern web-applications
+Singele Page Applikation, SPA er brugt til at beskrive applikation som er bygget for web. Disse applikation får adgang via en web browser som alle andre websiderne, men mere dynamisk til mobil og destop apps. SPA bruger AJAX som kan kommunikatere med back-end server uden at refrech hele siden. 
+Det er relevant at bruge, fordi det maksimerer bruger oplevelser, hvori bruger behøver ikke bliver afbudt af loading siden, og venter for at siden kommer igen. 
+
+●	Describe how SPA's are implemented with React
+
+Websider bliver bygget af små komponenter, hvor det gør koderne kan genbruges, og nemt at test. 
+React laver ændringer første i visuel DOM, uden af ænder hele fysisk DOM, hvori det gør siden kører meget hurtigere i forholdet til HTML DOM. 
+
+●	Explain about Routing in React
+React router holder ens UI i synkroniseret med de URL. Det har en simple API med stærkt features lige som lazy code loading. 
+<Route > component tager 2 properties: path og component. Når en path matcher den path sender man til den bestemt component.
+React kører index.js -> App.js, i App indeholder Router, som bliver importeret.
+

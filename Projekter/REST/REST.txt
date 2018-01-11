@@ -2,7 +2,7 @@ REST
 
 ●	Elaborate on some of the characteristics of REST, like: Stateless, Cacheable, Layered System, Uniform Interface etc.
 
-REST står for Representational state transfer eller RESTful, som er web service, er leverer forbindelser mellem computer system og Internet. 
+REST står for Representational state transfer eller RESTful, som er web service, er leverer forbindelser mellem computer system og Internet. x
 
 ●	Explain the benefit(s) from having a backend that exposes all data to clients via a REST-API
 ●	Elaborate on how JSON or XML supports communication between subsystems, even when the subsystems are implemented on diﬀerent platforms.
