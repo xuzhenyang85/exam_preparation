@@ -15,7 +15,7 @@ import userStore from './UserStore'; // En komponent med data af en user list
 const Welcome = () => {
   return (
     <div className="App">
-      <h1 className="greeting" >Welcome to our friends site</h1> 
+      <h1 className="greeting" >Welcome to our friends site</h1>
       <Link to="/all">See all users</Link><br />
     </div>
 )}
@@ -38,6 +38,7 @@ const App = () => (
         </Router>
 )
 // props: i html kalder vi attributer, f.eks. onclick, href
+// {...props} betyder alle propeties sender videre, lige som *, og forbinder alle props i jsx
 
 export default App;
 
