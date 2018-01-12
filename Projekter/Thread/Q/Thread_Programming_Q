@@ -3,7 +3,81 @@ Thread Programming
 
 
 ●	When and why will we use Threads in our programs?
+
+Thread er en tråd af excution i et program, den Java Virtual Machine lad en applikation til have multitråder af excution kørende concurrently(context switching, skiftvis af tasks). Det vil sige køre flere tinge i tråde i gang. 
+
+Måske er det lettere hvis spørgsmålet er, hvornår vil vi ikke bruge tråd til programet, det er hvis det er et simplt systemt. Det kan koste tung CPU, multi bruger. 
+Man bruger multitråd når man bygger en tung opreations uden "blocking" the flow, f.eks. GUI(Graphical user interface) eller I/O. 
+
+Fordelen er: hvis hvert tråd bruger individueal data, reducerer kravene låser og deadlocks øge 
+
 ●	What is the Race Condition Problem and how can you solve it?
+
+Programmet kører tråde i forskellige rækkefølger alt hvilket program. Når to eller flere tråde delt data og de prøver at ændre den data på "sammen tid". På grund af den tråd skema algoritma kan skifte mellem trådene i når som helst, og man ved ikke hvilken tråd får tilgå/ændre den delene data, derfor den resultat af ændret data er afhængig på tråde skema algoritma. 
+
+f.eks. 
+if (x == 5) // The "Check"
+{
+   y = x * 2; // The "Act"
+
+   // If another thread changed x in between "if (x == 5)" and "y = x * 2" above,
+   // y will not be equal to 10.
+}
+
+Det kan fikset ved at bruge Synchronized i den metode hvor der tilgår den variable. Det vil sige det er kun en tråd kan bruge og altid får den rigtige værdi, i stedet at bruge den cache kopi.
+
+public synchronized int getValue() {
+    return value;
+}
+
 ●	Explain the Producer/Consumer-problem and how to solve it in modern Java Programs
+
+Problemet beskriver to processer, den producer og den consumer, som deler en fælles, bestemt størrelse Buffer(缓冲器), brugt som en kø.
+
+- Producerens job er at generare data, sæt det ind i den Buffer, og start forfra
+- Sammen tiden, consumer forbruger den data (dvs. fjernelse den fra bufferen) en af gang
+
+Problem kan være, man skal sikker at producer ikke prøver at sætte data i den buffer hvis pufferen er fyldt og consumer ikke prøver at fjene data fra en tom puffer.
+
+Løsning:
+Producer må heller at go to sleep eller kassere data hvis pufferen er fyldt. Næste gang consumeren fjerner en vare fra den puffere, giver besked til produceren, som kan starte at fylde pufferen igen. På sammen måde, consumeren go to sleep hvis den finder ud af pufferen er tom. Næst gang produceren sætter data ind den puffer, så vækker den sovende consumere. 
+
+Det kan give en deadlock hvis begge processer venter på bliver vækkene.
+
+
 ●	Explain what Busy Waiting is and why it's a bad thing in a modern software system.
+
+Hvis vi har to tråde, tråd A og tråd B, i tråden B venter tråden A s signal, hvis signalen returnerer true, så gør noget, men tråden B er i en loop, og venter hele tid. Det bruger for meget CPU resouccer. 
+
+Måske er det en bedre en ide med at bruge sleep() eller notify()非运行
+
 ●	Describe Java's BlockingQueue interface, relevant implementations and methods relevant for the producer consumer problem.
+
+Det er en java kø interface som support opreationer som venter for den kø bliver none-empty når afhentning og fjernelse et objekt, 
+og venter på places bliver tilgændigt i den kø når man tilføjer et objekt. Den modtager ikke null element, når man prøver at add, put eller offer et null objekt, vil kaste en NullPointerException. null vil fortolke som poll(fjerne) opreation false.  Man kan definere størrelse af køen, hvis størrelsen er brugt, bliver køen blocket med put metode.
+
+Foskllen mellem add(e), offer(e) og put(e):
+add(e): metode vil kaste IllegalStateException
+offer(e): returnerer false
+put(e): vil blockes og venter indtil der er pladser og forsætter
+
+Forskellen mellem poll(time), take()
+
+poll(): vil tage det første objekt BlockingQueue fra, hvis ikke kan fjerne, venter den bestemt tid, hvis ikke lykkes returnerer null
+tak(): vil det første objekt fra, hvis køen er tomt, blockerer situation og venter indtil et nyt objekt kommer ind. 
+
+OBS: køen accepterer ikke null objket, hvis add(e), offer(e), og put(e) et null objket, køen vil kaste NullPointerException ud.
+
+Fordel:
+- kan begrænse størrelse af køen
+- bruger typisk i forbindelse med producer og consumer 
+- tråd sikkert, alle køer kan bruge låse, og kontroller og automatisk nå målet. 
+
+
+ArrayBlockingQueue: har en krav til størrelsen. Funktionen forventer et int for definerer størrelsen, rækkeføglen er FIFO(first ind fisrt out)
+LinkedBlockingQueue: ingen krav til størrelsen. Funktionen behøver ikke har et int, men hvis ingen int, er Integer.MAX_Value bestemmer. FIFO
+PriorityBlcokingQueue: ligner LinkedBlockingQueue, rækkeføglen er ikke FIFO, men narturlig objekt bestemmer.
+(SynchronousQueue: speciel, når der er en put SKAL det ventes en take!)
+
+
+

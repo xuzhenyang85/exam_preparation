@@ -15,7 +15,7 @@ import userStore from './UserStore'; // En komponent med data af en user list
 const Welcome = () => {
   return (
     <div className="App">
-      <h1 className="greeting" >Welcome to our friends site</h1> // velkommen hilsen
+      <h1 className="greeting" >Welcome to our friends site</h1> 
       <Link to="/all">See all users</Link><br />
     </div>
 )}
@@ -27,7 +27,7 @@ const Welcome = () => {
 // så man skal klaregør i path som blev brugt til URL
 // og i component skal den single komponent være renderes når route mathe den URL
 
-// {...props} sprædt 
+// {...props} sprædt
 const App = () => (
         <Router>
           <Switch>
