@@ -17,7 +17,7 @@ public class TcpServer {
     public static int PORT = 8080; // static gør variable tilgændige altid og kan deles
     public static String IP = "127.0.0.1";
     public long count = 0;
-    public int specCount = 0;
+    public int specCount = 0; // 
     
     // ArrayList<> hører ind collections. Undgå race condition, return tråd sikkert list
     private final List<ClientThreads> clientThreads = Collections.synchronizedList(new ArrayList<>());
@@ -40,6 +40,7 @@ public class TcpServer {
         {
             Socket socket = serverSocket.accept(); //Important Blocking call
             new ClientThreads(socket, this).start();
+            
         }
     }
     
@@ -50,7 +51,10 @@ public class TcpServer {
     public long getCount(){
         return count;
     }
-    
+    /**
+     * Hod styr på hvor mange klienter er connect
+     * @return en tal
+     */
     public int spectators(){
         specCount = 0;
         for (ClientThreads clientThread : clientThreads) {

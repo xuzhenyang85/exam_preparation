@@ -11,21 +11,21 @@ import java.util.Scanner;
  */
 public class ClientThreads extends Thread {
 
-    private Socket socket;// Forbindelse
-    private TcpServer masterServer;
-    private PrintWriter writer; // class, Prints formatted representations of objects to a text-output stream.
-    private Scanner reader; // 
+    private final Socket socket;// class, endpoint for kommunikationer mellem to maskine(forbindelsen)
+    private final TcpServer masterServer;
+    private final PrintWriter toClient; // class, Prints formatted representations of objects to a text-output stream.
+    private final Scanner fromClient; // class, en tekst scanner, brug til læs input fra keybord
     private String role = "";
 
     public ClientThreads(Socket socket, TcpServer masterServer) throws IOException {
         this.socket = socket;
         this.masterServer = masterServer;
-        this.reader = new Scanner(socket.getInputStream()); //return en intput stream fra this socket
-        this.writer = new PrintWriter(socket.getOutputStream(), true); //Returns an output stream for this socket. kaster IOException
+        this.fromClient = new Scanner(socket.getInputStream()); //return en intput stream fra this socket
+        this.toClient = new PrintWriter(socket.getOutputStream(), true); //class, printer formateret der repræsneter af objket til en teskt-output stream
     }
 
     public void sendMessage(String msg) {
-        writer.println(msg);
+        toClient.println(msg);
     }
     
     public String getRole(){
@@ -45,7 +45,7 @@ public class ClientThreads extends Thread {
         sendMessage("Ny forbindelsen er oprettet!");
         sendMessage("---- Commands: ---- \n turnstile (Sets role to turnstile) \n monitor (Sets role to monitor \n count (promts the server to count up - requires turnstile role) \n showcount (shows the current count - requires monitor or turnstile role) \n spectators (show amount of connected spectators - requires monitor role)");
         
-        String message = reader.nextLine();
+        String message = fromClient.nextLine();
 
         while (!message.toUpperCase().equals("QUIT")) {
             switch (message.toUpperCase()) {
@@ -98,7 +98,7 @@ public class ClientThreads extends Thread {
                     sendMessage("Invalid value" + message);
                     break;
             }
-            message = reader.nextLine();
+            message = fromClient.nextLine();
         }
         try {
             System.out.println("Forbindelsen er lukket!"); // debug

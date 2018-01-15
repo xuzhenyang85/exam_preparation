@@ -80,4 +80,3 @@ PriorityBlcokingQueue: ligner LinkedBlockingQueue, rækkeføglen er ikke FIFO, m
 (SynchronousQueue: speciel, når der er en put SKAL det ventes en take!)
 
 
-

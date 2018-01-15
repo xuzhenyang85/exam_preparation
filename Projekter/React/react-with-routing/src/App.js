@@ -24,10 +24,10 @@ const Welcome = () => {
 // så når den URL ændres, <Router> vil matche en branch af dens route, og render deres konfigurende komponenter
 
 // Route: er brugt til klaregør map routes til din apps komponent hierachy
-// så man skal klaregør i path som blev brugt til URL
+// så man skal klaregøre i path som blev brugt til URL
 // og i component skal den single komponent være renderes når route mathe den URL
 
-// {...props} sprædt
+// {...props} sprædt props
 const App = () => (
         <Router>
           <Switch>
