@@ -41,9 +41,9 @@ public class ClientThreads extends Thread {
 
         this.masterServer.addClientThread(this);// opret denne klasse til masterServer listen
 
-        System.out.println("Ny forbindelsen er oprettet!");
-        sendMessage("Ny forbindelsen er oprettet!");
-        sendMessage("---- Commands: ---- \n turnstile (Sets role to turnstile) \n monitor (Sets role to monitor \n count (promts the server to count up - requires turnstile role) \n showcount (shows the current count - requires monitor or turnstile role) \n spectators (show amount of connected spectators - requires monitor role)");
+        System.out.println("Ny forbindelsen er oprettet! Fra IP: "+ socket.getLocalAddress()+ " Port: " + socket.getPort());
+        sendMessage("Ny forbindelsen er oprettet! Fra IP: "+ socket.getLocalAddress()+ " Port: " + socket.getPort());
+        sendMessage("---- Commands: ---- \n turnstile (Sets role to turnstile) \n monitor (Sets role to monitor \n count (promts the server to count up - requires turnstile role) \n showcount (shows the current count - requires monitor or turnstile role) \n spectators (show amount of connected spectators - requires monitor role) \n quit (Quit)");
         
         String message = fromClient.nextLine();
 
@@ -101,8 +101,8 @@ public class ClientThreads extends Thread {
             message = fromClient.nextLine();
         }
         try {
-            System.out.println("Forbindelsen er lukket!"); // debug
-            sendMessage("Forbindelsen er lukket!");
+            System.out.println("Forbindelsen er lukket! Fra IP: "+ socket.getLocalAddress()+ " Port: " + socket.getPort()); // debug
+            sendMessage("Forbindelsen er lukket! Fra IP: "+ socket.getLocalAddress()+ " Port: " + socket.getPort());
             this.masterServer.removeClientThread(this); // fjerner fra masterServer listen
             socket.close();// lukker forbindelsen
 
