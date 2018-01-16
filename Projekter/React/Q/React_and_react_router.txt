@@ -16,7 +16,7 @@ props (klassens attribute)
 setState
 
 Hvad er Rendering
-render() skal returnerer noget, det er der html skal være, som skal vises til klient. Vi returnerer ikke en tekst string, men en element, js6. Være opmærksomhed på {}.
+render() skal returnerer noget, det er der html skal være, som skal vises til klient. Vi returnerer ikke en tekst string, men en element, jsx. Være opmærksomhed på {}.
 
 Hvad er Props
 i HTML er der <a href = “#” > click here </a>  I html href hedder det  attribute, a hedder en element, i react kalder prop, og html skal skrive med små og react skriver man med stor. 
